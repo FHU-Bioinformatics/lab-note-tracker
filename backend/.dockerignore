@@ -1,0 +1,18 @@
+.venv
+
+#Exclude Logs
+**/*.log
+
+#Exclude .env files
+**.env
+
+#Exclude git and github stuff
+.git
+.github
+.gitignore
+
+#Exclude tests from images
+__tests__
+
+#Exclude all markdown
+**.md
