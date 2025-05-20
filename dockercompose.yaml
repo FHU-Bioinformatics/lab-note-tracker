@@ -39,6 +39,8 @@ services:
       target: dev
     ports:
       - 3000:3000
+    environment:
+      - API_URL=http://fastapi_c:8000
     develop:
       watch:
         - path: ./frontend/src
