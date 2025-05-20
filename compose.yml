@@ -1,0 +1,55 @@
+name: lab-note-tracker
+services:
+  db:
+    container_name: db_c
+    image: postgres:16-alpine
+    environment:
+      - POSTGRES_PASSWORD=Mydatabasepassword1
+    ports:
+      - 5432:5432
+
+  fastapi:
+    depends_on:
+      - db
+    container_name: fastapi_c
+    build:
+      context: ./backend
+      dockerfile: Containerfile
+      target: dev
+    ports:
+      - 8000:8000
+    environment:
+      - DB_URL=postgresql://postgres:Mydatabasepassword1@db_c:5432/postgres
+    develop:
+      watch:
+        - path: ./backend/app
+          target: /app/app
+          action: sync
+        - path: ./backend/pyproject.toml
+          action: rebuild
+
+  nextjs:
+    depends_on:
+      - fastapi
+      - db
+    container_name: next_c
+    build:
+      context: ./frontend
+      dockerfile: Containerfile
+      target: dev
+    ports:
+      - 3000:3000
+    environment:
+      - API_URL=http://fastapi_c:8000
+    develop:
+      watch:
+        - path: ./frontend/src
+          target: /app/src
+          action: sync
+        - path: ./frontend/package.json
+          action: rebuild
+        - path: ./frontend/package-lock.json
+          action: rebuild
+        - path: ./frontend/public
+          target: /app/public
+          action: sync
