@@ -16,3 +16,5 @@ __tests__
 
 #Exclude all markdown
 **.md
+
+__pycache__

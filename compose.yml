@@ -17,7 +17,7 @@ services:
       dockerfile: Containerfile
       target: dev
     ports:
-      - 8000:8000
+      - 35000:8000
     environment:
       - DB_URL=postgresql://postgres:Mydatabasepassword1@db_c:5432/postgres
     develop:
@@ -38,7 +38,7 @@ services:
       dockerfile: Containerfile
       target: dev
     ports:
-      - 3000:3000
+      - 5143:3000
     environment:
       - API_URL=http://fastapi_c:8000
     develop:

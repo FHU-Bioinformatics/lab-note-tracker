@@ -9,9 +9,9 @@ FROM base AS prod
 RUN uv sync --frozen --no-cache
 
 # Run the application.
-CMD ["/app/.venv/bin/fastapi", "run", "app/main.py", "--port", "80", "--host", "0.0.0.0"]
+CMD ["/app/.venv/bin/fastapi", "run", "/app/app/main.py", "--port", "80", "--host", "0.0.0.0"]
 
 
 FROM base AS dev
 RUN uv sync --locked
-CMD ["uv", "run", "fastapi", "dev"]
+CMD ["uv", "run", "fastapi", "dev", "--host", "0.0.0.0", "/app/app/main.py"]
