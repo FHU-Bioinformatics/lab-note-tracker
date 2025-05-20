@@ -34,4 +34,5 @@ Uses:
 - `DB_URL`: The URL of the database to use.
 
 #### Frontend
-- `API_URL`: The URL of the backend API.
+Environment Variables that are exposed to the client require NEXT_PUBLIC at the beginning.
+- `NEXT_PUBLIC_API_URL`: The URL of the backend API.
