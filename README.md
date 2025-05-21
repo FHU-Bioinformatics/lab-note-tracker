@@ -32,6 +32,7 @@ Uses:
 
 #### Backend
 - `DB_URL`: The URL of the database to use.
+- `FRONTEND_URL`: The URL of the frontend application. This is to allow it past the CORS middleware.
 
 #### Frontend
 Environment Variables that are exposed to the client require NEXT_PUBLIC at the beginning.

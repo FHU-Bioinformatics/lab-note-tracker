@@ -1,22 +1,14 @@
 "use client";
-import { useState, useEffect } from "react";
-import apiClient from "@/api/apiClient";
+import { hooks } from "@/app/hooks";
+
+interface ExpectedResponse {
+  message: string;
+}
 
 const BackendTest = () => {
-  const [message, setMessage] = useState<string>();
+  const { data } = hooks.useFetchQuery<ExpectedResponse>("/");
 
-  useEffect(() => {
-    try {
-      apiClient.get("/").then(async (response) => {
-        setMessage(response.data.message);
-      });
-    } catch (err) {
-      console.log(err);
-      setMessage("An error has occured");
-    }
-  }, [setMessage]);
-
-  return <p className="text-white">Message from backend: {message}</p>;
+  return <p className="text-white">Message from backend: {data?.message}</p>;
 };
 
 export default BackendTest;
