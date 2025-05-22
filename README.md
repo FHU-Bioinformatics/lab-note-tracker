@@ -5,6 +5,9 @@ by the FHU Genome Sequencing Project.
 
 ## Developers
 
+### Database
+[Schema](https://dbdiagram.io/d/lab-note-tracker-682f20bcb9f7446da3b248f9)
+
 ### Frontend
 
 Uses:
